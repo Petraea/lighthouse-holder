@@ -81,7 +81,11 @@ module base() {
 
 module fork() {
   difference() {
-    translate([0,0,32]) cube([141,20,80],center=true);
+    translate([0,0,22]) minkowski() {
+      cube([101,20,60],center=true);
+      rotate([90,0,0]) cylinder(h=shim,r=20,center=true);
+    }
+    translate([0,0,-23]) cube([165,30,30],center=true); //Undertrim
     translate([0,0,0]) minkowski() {
       cube([46*2,30,46*2+5],center=true);
       rotate([90,0,0]) cylinder(h=shim,r=20,center=true);

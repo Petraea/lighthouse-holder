@@ -83,8 +83,8 @@ module fork() {
   difference() {
     translate([0,0,32]) cube([141,20,80],center=true);
     translate([0,0,0]) cube([67.5*2,30,66*2+5],center=true);
-    translate([0,0,69+15]) rotate([0,0,0]) boltHole(size=8,length=15,tolerance=1);
     //Connector between base and holder
+    translate([0,0,69+15]) rotate([0,0,0]) boltHole(size=8,length=15,tolerance=1);
     //bolt hole for base and bolts for holder
     translate([-77,0,0]) rotate([0,90,0]) boltHole(size=4,length=15,tolerance=0.5);
     translate([77,0,0]) rotate([0,-90,0]) boltHole(size=4,length=15,tolerance=0.5);
@@ -101,11 +101,11 @@ module view(t=0,y=0) {
 }
 
 module print() {
-  translate([130,0,52.5]) rotate([180,0,90]) lighthouse_holder(true);
-  translate([0,0,52.5]) rotate([0,0,90]) lighthouse_holder(false);
-  translate([0,0,10]) rotate([90,0,0]) fork();
+  translate([90,0,47.5]) rotate([180,0,90]) lighthouse_holder(true);
+  translate([0,0,47.5]) rotate([0,0,90]) lighthouse_holder(false);
+  translate([-25,0,10]) rotate([90,0,0]) fork();
   translate([0,0,0]) rotate([0,0,0]) base();
-  translate([0,0,0]) rotate([0,0,0]) base();
+  translate([0,-100,0]) rotate([0,0,90]) base();
 }
 
-view(45,0);
+print();

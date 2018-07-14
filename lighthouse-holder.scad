@@ -1,7 +1,7 @@
 use <MCAD/nuts_and_bolts.scad>;
 $fn=50;
 shim=0.01;
-module lighthouse(dims=[85,62,89],curve_radius=9,shim=0.01,cable_edge=8,screw_offset=15) {
+module lighthouse(dims=[85,62,84],curve_radius=9,shim=0.01,cable_edge=8,screw_offset=15) {
   inner_dims=[dims[0]-curve_radius*2,
                dims[1],
                dims[2]-curve_radius*2];
@@ -108,4 +108,4 @@ module print() {
   translate([0,-100,0]) rotate([0,0,90]) base();
 }
 
-print();
+view(45,0);

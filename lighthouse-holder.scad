@@ -94,8 +94,8 @@ module fork() {
 module view(t=0,y=0) {
   translate([0,0,103]) rotate([180,0,0]) base();
   rotate([0,0,y]) {
-    rotate([-t,0,0]) lighthouse_holder(true);
-    rotate([-t,0,0]) lighthouse_holder(false);
+    rotate([-t,0,0]) translate([0,0,0.005]) lighthouse_holder(true);
+    rotate([-t,0,0]) translate([0,0,-0.005]) lighthouse_holder(false);
     fork();
   }
 }
@@ -108,4 +108,4 @@ module print() {
   translate([0,0,0]) rotate([0,0,0]) base();
 }
 
-print();
+view(45,45);

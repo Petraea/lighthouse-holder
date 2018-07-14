@@ -82,7 +82,7 @@ module base() {
 module fork() {
   difference() {
     translate([0,0,32]) cube([141,20,80],center=true);
-    translate([0,0,0]) cube([67.5*2,30,66*2+5],center=true);
+    translate([0,0,0]) cube([66*2,30,66*2+5],center=true);
     //Connector between base and holder
     translate([0,0,69+15]) rotate([0,0,0]) boltHole(size=8,length=15,tolerance=1);
     //bolt hole for base and bolts for holder
@@ -107,4 +107,4 @@ module print() {
   translate([0,-100,0]) rotate([0,0,90]) base();
 }
 
-view(45,0);
+view();

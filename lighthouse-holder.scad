@@ -104,7 +104,6 @@ module print() {
   translate([90,0,47.5]) rotate([180,0,90]) lighthouse_holder(true);
   translate([0,0,47.5]) rotate([0,0,90]) lighthouse_holder(false);
   translate([-25,0,10]) rotate([90,0,0]) fork();
-  translate([0,0,0]) rotate([0,0,0]) base();
   translate([0,-100,0]) rotate([0,0,90]) base();
 }
 

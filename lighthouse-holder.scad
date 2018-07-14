@@ -1,7 +1,7 @@
 use <MCAD/nuts_and_bolts.scad>;
 $fn=50;
 shim=0.01;
-module lighthouse(dims=[100,100,100],curve_radius=10,shim=0.01,cable_edge=8,screw_offset=15) {
+module lighthouse(dims=[85,62,89],curve_radius=9,shim=0.01,cable_edge=8,screw_offset=15) {
   inner_dims=[dims[0]-curve_radius*2,
                dims[1],
                dims[2]-curve_radius*2];
@@ -21,33 +21,33 @@ module lighthouse_holder(top=true) {
   difference() {
     union () {
       difference() {
-        cube([105,105,105],center=true);
-        cube([85,85,125],center=true);
-        cube([85,125,85],center=true);
+        cube([90,68,95],center=true);
+        cube([75,50,125],center=true);
+        cube([75,125,80],center=true);
 //        translate([0,0,30]) cube([125,85,25],center=true);
 //        translate([0,0,-30]) cube([125,85,25],center=true);
       }
     difference() {
-      cube([135,30,35],center=true);
+      cube([130,30,35],center=true);
       //Cornering for printer
-      translate([86,0,-20]) rotate([0,45,0]) cube([50,50,50],center=true);
-      translate([-86,0,-20]) rotate([0,45,0]) cube([50,50,50],center=true);
-      translate([86,0,20]) rotate([0,45,0]) cube([50,50,50],center=true);
-      translate([-86,0,20]) rotate([0,45,0]) cube([50,50,50],center=true);
+      translate([82,0,-20]) rotate([0,45,0]) cube([50,50,50],center=true);
+      translate([-82,0,-20]) rotate([0,45,0]) cube([50,50,50],center=true);
+      translate([82,0,20]) rotate([0,45,0]) cube([50,50,50],center=true);
+      translate([-82,0,20]) rotate([0,45,0]) cube([50,50,50],center=true);
       //Top and bottom screws
-      translate([-58,0,-5]) nutHole(size=4,tolerance=0.2);
-      translate([-58,0,-14.5]) cylinder(h=20,r=5.5,center=true);
-      translate([-58,0,2]) rotate([180,0,0]) boltHole(size=4,length=15,tolerance=1);
-      translate([-58,0,12]) cylinder(h=20,r=5.5,center=true);
-      translate([58,0,2]) nutHole(size=4,tolerance=0.2);
-      translate([58,0,14.5]) cylinder(h=20,r=5.5,center=true);
-      translate([58,0,-2]) boltHole(size=4,length=15,tolerance=1);
-      translate([58,0,-12]) cylinder(h=20,r=5.5,center=true);
+      translate([-51,0,-5]) nutHole(size=4,tolerance=0.2);
+      translate([-51,0,-14.5]) cylinder(h=20,r=5.5,center=true);
+      translate([-51,0,2]) rotate([180,0,0]) boltHole(size=4,length=15,tolerance=1);
+      translate([-51,0,12]) cylinder(h=20,r=5.5,center=true);
+      translate([51,0,2]) nutHole(size=4,tolerance=0.2);
+      translate([51,0,14.5]) cylinder(h=20,r=5.5,center=true);
+      translate([51,0,-2]) boltHole(size=4,length=15,tolerance=1);
+      translate([51,0,-12]) cylinder(h=20,r=5.5,center=true);
       //Side screws
-      translate([-65,0,0]) rotate([0,90,0]) nutHole(size=4,tolerance=0.2);
-      translate([-77,0,0]) rotate([0,90,0]) boltHole(size=4,length=15,tolerance=0.5);
-      translate([65,0,0]) rotate([0,-90,0]) nutHole(size=4,tolerance=0.2);
-      translate([77,0,0]) rotate([0,-90,0]) boltHole(size=4,length=15,tolerance=0.5);
+      translate([-60,0,0]) rotate([0,90,0]) nutHole(size=4,tolerance=0.2);
+      translate([-72,0,0]) rotate([0,90,0]) boltHole(size=4,length=15,tolerance=0.5);
+      translate([60,0,0]) rotate([0,-90,0]) nutHole(size=4,tolerance=0.2);
+      translate([72,0,0]) rotate([0,-90,0]) boltHole(size=4,length=15,tolerance=0.5);
     }
     }
     if (top) {
@@ -81,8 +81,8 @@ module base() {
 
 module fork() {
   difference() {
-    translate([0,0,42]) cube([146,20,100],center=true);
-    translate([0,0,0]) cube([69*2,30,76*2+10],center=true);
+    translate([0,0,32]) cube([141,20,80],center=true);
+    translate([0,0,0]) cube([67.5*2,30,66*2+5],center=true);
     translate([0,0,69+15]) rotate([0,0,0]) boltHole(size=8,length=15,tolerance=1);
     //Connector between base and holder
     //bolt hole for base and bolts for holder
@@ -92,10 +92,10 @@ module fork() {
 }
 
 module view(t=0,y=0) {
-  translate([0,0,103]) rotate([180,0,0]) base();
+  translate([0,0,83]) rotate([180,0,0]) base();
   rotate([0,0,y]) {
-    rotate([-t,0,0]) translate([0,0,0.005]) lighthouse_holder(true);
-    rotate([-t,0,0]) translate([0,0,-0.005]) lighthouse_holder(false);
+    rotate([t,0,0]) translate([0,0,0.005]) lighthouse_holder(true);
+    rotate([t,0,0]) translate([0,0,-0.005]) lighthouse_holder(false);
     fork();
   }
 }
@@ -108,4 +108,4 @@ module print() {
   translate([0,0,0]) rotate([0,0,0]) base();
 }
 
-view(45,45);
+view(45,0);
